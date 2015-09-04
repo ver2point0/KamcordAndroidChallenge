@@ -11,15 +11,15 @@ import com.ver2point0.kamcordandroidchallenge.context.MyApplication;
 public class VolleyNetwork {
 
     private static VolleyNetwork sInstance;
-    private ImageLoader mImageLoader;
-    private RequestQueue mRequestQueue;
+    private final ImageLoader mImageLoader;
+    private final RequestQueue mRequestQueue;
 
     private VolleyNetwork() {
         mRequestQueue = Volley.newRequestQueue(MyApplication.getAppContext());
         mImageLoader = new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() {
             // an image cache
             // returns memory in bytes
-            private LruCache<String, Bitmap> imageCache =
+            private final LruCache<String, Bitmap> imageCache =
                     new LruCache<String, Bitmap>((int) Runtime.getRuntime().maxMemory()
                             / 1024 / 8);
 

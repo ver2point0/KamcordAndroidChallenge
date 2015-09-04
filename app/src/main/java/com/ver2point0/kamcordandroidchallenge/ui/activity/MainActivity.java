@@ -32,14 +32,14 @@ import java.util.List;
 
 public class MainActivity extends Activity implements VideoAdapter.OnThumbnailClickListener {
 
-    public static final String KAMCORD_FEED_URL = "https://app.kamcord.com/app/v3/feeds/featured_feed";
-    public static final String JSON_KEY_RESPONSE = "response";
-    public static final String JSON_KEY_VIDEO_LIST = "video_list";
+    private static final String KAMCORD_FEED_URL = "https://app.kamcord.com/app/v3/feeds/featured_feed";
+    private static final String JSON_KEY_RESPONSE = "response";
+    private static final String JSON_KEY_VIDEO_LIST = "video_list";
     public static final String JSON_KEY_NEXT_PAGE = "next_page";
-    public static final String JSON_KEY_TITLE = "title";
-    public static final String JSON_KEY_THUMBNAILS = "thumbnails";
-    public static final String JSON_KEY_REGULAR = "regular";
-    public static final String JSON_KEY_VIDEO_URL = "video_url";
+    private static final String JSON_KEY_TITLE = "title";
+    private static final String JSON_KEY_THUMBNAILS = "thumbnails";
+    private static final String JSON_KEY_REGULAR = "regular";
+    private static final String JSON_KEY_VIDEO_URL = "video_url";
     public static final String INTENT_KEY_VIDEO_URL = "videoUrl";
 
     private RecyclerView mRecyclerView;
@@ -49,7 +49,9 @@ public class MainActivity extends Activity implements VideoAdapter.OnThumbnailCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initialViews();
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_video_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
 
         // check for internet
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -90,11 +92,6 @@ public class MainActivity extends Activity implements VideoAdapter.OnThumbnailCl
                 });
 
         requestQueue.add(jsonObjectRequest);
-    }
-
-    private void initialViews() {
-        mRecyclerView = (RecyclerView) findViewById(R.id.rv_video_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
     }
 
     // parse needed data

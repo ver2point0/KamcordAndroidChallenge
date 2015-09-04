@@ -17,8 +17,8 @@ import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
 
-    private LayoutInflater mInflater;
-    private List<VideoInformation> mVideoInformationList;
+    private final LayoutInflater mInflater;
+    private final List<VideoInformation> mVideoInformationList;
     private  OnThumbnailClickListener mOnThumbnailClickListener;
 
     public VideoAdapter(Context context, List<VideoInformation> videoInformation) {
@@ -29,8 +29,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     @Override
     public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = mInflater.inflate(R.layout.video_item, parent, false);
-        VideoViewHolder holder = new VideoViewHolder(view);
-        return holder;
+        return new VideoViewHolder(view);
     }
 
     @Override
@@ -54,8 +53,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     class VideoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView videoTitle;
-        NetworkImageView videoThumbnail;
+        final TextView videoTitle;
+        final NetworkImageView videoThumbnail;
 
         public VideoViewHolder(View itemView) {
             super(itemView);
@@ -66,7 +65,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     }
 
     public interface OnThumbnailClickListener {
-        public void onThumbnailClick(String videoUrl);
+         void onThumbnailClick(String videoUrl);
     }
 
     public void setOnThumbnailClickListener(OnThumbnailClickListener onThumbnailClickListener) {

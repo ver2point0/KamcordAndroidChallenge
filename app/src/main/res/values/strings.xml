@@ -2,5 +2,8 @@
 <resources>
 
     <string name="app_name">KamcordAndroidChallenge</string>
-
+    <string name="progress_dialog_title">Please wait</string>
+    <string name="progress_dialog_info">Retrieving information</string>
+    <string name="progress_dialog_buff">Buffering</string>
+    <string name="network_unavailable">Network unavailable</string>
 </resources>
